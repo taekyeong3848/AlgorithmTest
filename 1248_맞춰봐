@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int N;
+int seq_length;
+char* seq;
+vector<int> v;
+int candi[21];
+bool visit[21];
+
+
+void permu()
+{
+	if (v.size() == N)
+	{
+		
+	}
+
+	for (int i = 0; i < 21; i++)
+	{
+		if (!visit[i])
+		{
+			visit[i] = true;
+			v.push_back(candi[i]);
+			permu();
+			v.pop_back();
+			visit[i] = false;
+		}
+	}
+}
+
+
+int main()
+{
+	cin >> N;
+
+	seq_length = N * (N + 1) / 2;
+	seq = new char[seq_length];
+
+	cin >> seq;
+
+	for (int i = 0; i <= 20; i++)
+		candi[i] = i - 10;
+
+	permu();
+
+	return 0;
+}
