@@ -1,0 +1,91 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+typedef struct{
+int type;
+int r;
+int c;
+}Node;
+
+int N, M;
+int** map;
+int minValue;
+vector<Node> nodeV;
+vector<int> v;
+
+int camOne[4] = { 1, 2, 3, 4 };
+int camTwo[2] = { 1 ,2 };
+int cmaThree[4] = { 1, 2, 3, 4 };
+int camFour[4] = { 1, 2, 3, 4 };
+int camFive[1] = { 1 };
+
+
+void process()
+{
+
+}
+
+
+void permu()
+{
+	if (v.size() == nodeV.size())
+	{
+		process();
+		return;
+	}
+
+	for (int i = 0; i < nodeV.size(); i++)
+	{
+		switch (nodeV.at(i).type)
+		{
+		case 1:
+
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		}
+	}
+}
+
+
+int main()
+{
+
+	cin >> N >> M;
+
+	map = new int*[N];
+
+	for (int i = 0; i < M; i++)
+		map[i] = new int[M];
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			cin >> map[i][j];
+			if (map[i][j] != 0 && map[i][j] != 6)
+			{
+				Node nodeTmp;
+				nodeTmp.type = map[i][j];
+				nodeTmp.r = i;
+				nodeTmp.c = j;
+				nodeV.push_back(nodeTmp);
+			}
+		}
+	}
+
+	permu();
+
+	cout << minValue << endl;
+
+	return 0;
+}
