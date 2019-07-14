@@ -1,0 +1,77 @@
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+typedef struct shark {
+	//int idx;//상어끼리 구분자
+	int r;//row
+	int c;//column
+	int s;//speed
+	int d;//direction(1=위,2=아래,3=오른쪽,4=왼쪽)
+	int z;//size
+}Shark;
+
+
+typedef struct sharkmap {
+	int idx;
+	Shark curShark;
+}SharkMap;
+
+int R, C, M;
+int Sum;
+SharkMap **Map;
+map<int, Shark> m;//존재하는 상어들의 map
+
+
+void search(int curColumn)
+{
+}
+
+
+void move()//현재 상어들의 map인 m 안에 있는 애들을 Map에 뿌려줌
+{
+	for (int i = 1; i < R + 1; i++)
+	{
+		for (int j = 1; j < C + 1; j++)
+		{
+			Map[i][j].idx = -1;//초기화
+		}
+	}
+
+	for (auto it = m.begin(); it != m.end(); it++)
+	{
+		//it->second
+		if (Map[it->second.r][it->second.c].idx == -1)
+		{
+			Map[it->second.r][it->second.c].idx = 
+
+		}
+	}
+}
+
+
+int main()
+{
+	cin >> R >> C >> M;
+
+	Map = new SharkMap*[R + 1];
+
+	for (int i = 0; i < C + 1; i++)
+		Map[i] = new SharkMap[C + 1];
+
+	for (int i = 0; i < M; i++)
+	{
+		Shark tmp;
+		cin >> tmp.r >> tmp.c >> tmp.s >> tmp.d >> tmp.z;
+		m.insert(make_pair(i, tmp));
+	}
+
+	for (int i = 0; i < C; i++)
+	{
+		search(i);
+		move();
+	}
+
+	return 0;
+}
